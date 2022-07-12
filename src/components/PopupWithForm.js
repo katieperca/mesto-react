@@ -6,13 +6,14 @@ function PopupWithForm(props) {
   return(
     <section className={classNameToggleOpen}>
       <div className="popup__container">
-        <form action="post" name={`${props.name}`} className={`popup__form popup__form_type_${props.name} form`} noValidate>
+        <form action="post" name={`${props.name}`} className={`popup__form popup__form_type_${props.name} form`}>
           <h2 className="form__title">
             {props.title}
           </h2>
           {props.children}
+          <button className="form__save-button form__save-button_type_add button button_type_save" disabled type="submit">{props.buttonTitle}</button>
         </form>
-        <button onClick={props.onClose} className="popup__close-button button button_type_close" type="button">Закрыть</button>
+        <button onClick={props.onClose} className="popup__close-button button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
     </section>
   )
