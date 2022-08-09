@@ -1,4 +1,4 @@
-.button_type_like {
+.card__like-button {
   background-color: transparent;
   width: 22px;
   height: 19px;
@@ -9,10 +9,10 @@
   cursor: pointer;
 }
 
-.button_type_like:hover {
+.card__like-button:hover {
   opacity: 0.5;
 }
 
-.button_type_like:active {
+.card__like-button:active {
   background-image: url('../../../images/like-button-active.svg');
 }
