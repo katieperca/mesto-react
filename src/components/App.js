@@ -15,6 +15,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
@@ -64,7 +66,9 @@ function App() {
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
+      }).catch((err) => {
+        console.log('Ой, ошибка', err);
+      });
   }
 
   function handleCardDelete(card) {
@@ -72,13 +76,14 @@ function App() {
       .then(() => {
         const newCards = cards.filter((c) => c._id !== card._id && c);
         setCards(newCards);
-    }).catch((err) => {
-      console.log('Ой, ошибка', err);
-    });
+      }).catch((err) => {
+        console.log('Ой, ошибка', err);
+      });
   }
 
   function handleCardClick(card) {
     setSelectedCard(card);
+    setIsImagePopupOpen(true);
   }
 
   function handleEditAvatarClick() {
@@ -97,7 +102,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard(null);
+    setIsImagePopupOpen(false);
   }
 
   return (
@@ -130,6 +135,7 @@ function App() {
           onUpdateAvatar={handleUpdateAvatar}
         />
         <ImagePopup
+          isOpen={isImagePopupOpen}
           onClose={closeAllPopups}
           card={selectedCard}
         />

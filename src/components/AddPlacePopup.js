@@ -30,9 +30,9 @@ function AddPlacePopup(props) {
       title='Новое место'
       buttonTitle='Сохранить'
     >
-      <input onChange={handleChangeName} className="form__input" id="place-name" type="text" name="place-name" placeholder="Название" minLength="2" maxLength="30" required />
+      <input onChange={handleChangeName} value={name} className="form__input" id="place-name" type="text" name="place-name" placeholder="Название" minLength="2" maxLength="30" required />
       <span id="place-name-error" className="form__input-error place-name-error"></span>
-      <input onChange={handleChangeLink} className="form__input" id="link" type="url" name="link" placeholder="Ссылка на картинку" required />
+      <input onChange={handleChangeLink} value={link} className="form__input" id="link" type="url" name="link" placeholder="Ссылка на картинку" required />
       <span id="photo-error" className="form__input-error photo-error"></span>
     </PopupWithForm>
   )
